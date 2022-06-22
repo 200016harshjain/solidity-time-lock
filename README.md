@@ -1,4 +1,4 @@
-#Time Lock 
+# Time Lock 
 A time lock contract is basically a contract in which you deposit some amount of money which you can only withdraw after a FIXED period of time. 
 
 ## Basic Features
