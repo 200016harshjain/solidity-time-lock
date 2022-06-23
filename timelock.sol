@@ -41,16 +41,21 @@ function checkBalance() public view returns (uint) {
     return balancePerUser[msg.sender];
 }
 
-function withdraw() external payable {
-    require(balancePerUser[msg.sender] >0 , "Insufficient funds" );
-        if(block.timestamp > timeLeftPerUser[msg.sender])
-    {
+ // check that the sender has ether deposited in this contract in the mapping and the balance is >0
+        require(balancePerUser[msg.sender] > 0, "insufficient funds");
+
+       
+        require(block.timestamp > timeLeftPerUser[msg.sender], "lock time has not expired");
+      
+
+        // update the balance
         uint amount = balancePerUser[msg.sender];
         balancePerUser[msg.sender] = 0;
-         (bool sent, ) = msg.sender.call{value: amount}("");
+
+       
+        // send the ether back to the sender
+        (bool sent, ) = msg.sender.call{value: amount}("");
         require(sent, "Failed to send ether");
-    }
-}
 
 
 
