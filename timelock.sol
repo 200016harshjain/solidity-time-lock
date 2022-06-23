@@ -41,6 +41,7 @@ function checkBalance() public view returns (uint) {
     return balancePerUser[msg.sender];
 }
 
+function withdraw() public payable {
  // check that the sender has ether deposited in this contract in the mapping and the balance is >0
         require(balancePerUser[msg.sender] > 0, "insufficient funds");
 
@@ -59,8 +60,6 @@ function checkBalance() public view returns (uint) {
 
 
 
-
-
-
+}
 
 }
