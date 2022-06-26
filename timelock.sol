@@ -21,9 +21,9 @@ using SafeMath for uint;
 mapping(address => uint) public balancePerUser;
 mapping(address => uint) public timeLeftPerUser;
 
-function deposit( uint amount) external payable {
+function deposit() external payable {
 
-    balancePerUser[msg.sender] = balancePerUser[msg.sender].add(amount);
+    balancePerUser[msg.sender] = balancePerUser[msg.sender].add(msg.value);
   timeLeftPerUser[msg.sender] =  timeLeftPerUser[msg.sender] + block.timestamp + 20 seconds;   
 
 
